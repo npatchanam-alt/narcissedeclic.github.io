@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NARCISSE DECLIC — Citations & Motivation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --noir: #0D0D0D;
+    --or: #D4A843;
+    --or2: #F0C96B;
+    --rouge: #B01C1C;
+    --creme: #FBF7F0;
+    --gris: #6B6B6B;
+    --blanc: #FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family:'DM Sans',sans-serif; background:var(--noir); color:var(--blanc); overflow-x:hidden; }
+
+  /* CURSEUR PERSONNALISÉ */
+  * { cursor: none; }
+  .cursor {
+    position:fixed; width:12px; height:12px;
+    background:var(--or); border-radius:50%;
+    pointer-events:none; z-index:9999;
+    transform:translate(-50%,-50%);
+    transition:transform 0.1s, width 0.3s, height 0.3s;
+  }
+  .cursor-ring {
+    position:fixed; width:36px; height:36px;
+    border:1px solid rgba(212,168,67,0.5);
+    border-radius:50%; pointer-events:none;
+    z-index:9998; transform:translate(-50%,-50%);
+    transition:transform 0.15s;
+  }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; width:100%; z-index:100;
+    padding:20px 48px;
+    display:flex; align-items:center; justify-content:space-between;
+    background:linear-gradient(to bottom, rgba(13,13,13,0.98), transparent);
+  }
+  .logo {
+    font-family:'Playfair Display',serif;
+    font-size:22px; font-weight:900;
+    color:var(--or); letter-spacing:3px;
+  }
+  .logo span { color:var(--blanc); font-weight:400; }
+  .nav-links { display:flex; gap:36px; list-style:none; }
+  .nav-links a {
+    color:rgba(255,255,255,0.6); text-decoration:none;
+    font-size:13px; letter-spacing:1.5px; text-transform:uppercase;
+    transition:color 0.3s;
+  }
+  .nav-links a:hover { color:var(--or); }
+  .nav-soutien {
+    background:var(--or); color:var(--noir) !important;
+    padding:8px 20px; font-weight:500 !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height:100vh;
+    display:flex; align-items:center;
+    padding:120px 48px 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero-bg {
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at 30% 50%, rgba(212,168,67,0.08) 0%, transparent 60%),
+               radial-gradient(ellipse at 80% 20%, rgba(176,28,28,0.06) 0%, transparent 50%);
+  }
+  .hero-lines {
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(
+      90deg, transparent, transparent 80px,
+      rgba(212,168,67,0.02) 80px, rgba(212,168,67,0.02) 81px
+    );
+  }
+  .hero-content { position:relative; max-width:700px; }
+  .hero-tag {
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid rgba(212,168,67,0.4);
+    padding:6px 16px; margin-bottom:32px;
+    font-size:11px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--or);
+  }
+  .hero h1 {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(56px,8vw,100px);
+    font-weight:900; line-height:0.95;
+    margin-bottom:32px;
+  }
+  .hero h1 .line1 { display:block; color:var(--blanc); }
+  .hero h1 .line2 { display:block; color:var(--or); font-style:italic; }
+  .hero h1 .line3 { display:block; color:rgba(255,255,255,0.3); font-size:0.6em; font-weight:400; letter-spacing:4px; margin-top:8px; }
+  .hero-desc {
+    font-size:16px; line-height:1.8;
+    color:rgba(255,255,255,0.6); margin-bottom:40px;
+    max-width:480px;
+  }
+  .hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
+  .btn-gold {
+    background:var(--or); color:var(--noir);
+    padding:14px 32px; font-size:13px;
+    font-weight:600; letter-spacing:1.5px;
+    text-transform:uppercase; border:none;
+    text-decoration:none; display:inline-block;
+    transition:all 0.3s;
+  }
+  .btn-gold:hover { background:var(--or2); transform:translateY(-3px); }
+  .btn-outline {
+    border:1px solid rgba(255,255,255,0.3);
+    color:var(--blanc); padding:14px 32px;
+    font-size:13px; letter-spacing:1.5px;
+    text-transform:uppercase; background:transparent;
+    text-decoration:none; display:inline-block;
+    transition:all 0.3s;
+  }
+  .btn-outline:hover { border-color:var(--or); color:var(--or); }
+  .hero-right {
+    position:absolute; right:48px; top:50%;
+    transform:translateY(-50%);
+    display:flex; flex-direction:column; gap:16px;
+    align-items:flex-end;
+  }
+  .stat-pill {
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(212,168,67,0.2);
+    padding:16px 24px; text-align:right;
+  }
+  .stat-pill .num {
+    font-family:'Playfair Display',serif;
+    font-size:32px; font-weight:700; color:var(--or);
+    display:block;
+  }
+  .stat-pill .lbl { font-size:11px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase; }
+
+  /* CITATION DU JOUR */
+  .quote-day {
+    padding:80px 48px;
+    background:linear-gradient(135deg, #1A1000, #0D0D0D);
+    border-top:1px solid rgba(212,168,67,0.15);
+    border-bottom:1px solid rgba(212,168,67,0.15);
+    text-align:center; position:relative;
+  }
+  .quote-day::before {
+    content:'"';
+    position:absolute; top:-20px; left:50%; transform:translateX(-50%);
+    font-family:'Playfair Display',serif;
+    font-size:180px; color:rgba(212,168,67,0.06);
+    line-height:1; pointer-events:none;
+  }
+  .quote-label { font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--or); margin-bottom:24px; }
+  .quote-text {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(24px,4vw,48px);
+    font-weight:400; font-style:italic;
+    color:var(--blanc); line-height:1.4;
+    max-width:800px; margin:0 auto 24px;
+  }
+  .quote-author { font-size:14px; color:rgba(255,255,255,0.4); letter-spacing:2px; }
+  .quote-actions { margin-top:32px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .action-btn {
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    color:rgba(255,255,255,0.7); padding:10px 20px;
+    font-size:12px; letter-spacing:1px;
+    cursor:pointer; transition:all 0.3s;
+    font-family:'DM Sans',sans-serif;
+  }
+  .action-btn:hover { background:rgba(212,168,67,0.1); border-color:var(--or); color:var(--or); }
+
+  /* MES PENSEES */
+  .pensees { padding:100px 48px; }
+  .section-label {
+    font-size:11px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--or); margin-bottom:12px;
+  }
+  .section-title {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(36px,5vw,60px); font-weight:700;
+    line-height:1.1; margin-bottom:64px;
+  }
+  .pensees-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+    gap:2px; max-width:1200px; margin:0 auto;
+  }
+  .pensee-card {
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.06);
+    padding:40px 32px; position:relative;
+    transition:all 0.4s; overflow:hidden;
+  }
+  .pensee-card::before {
+    content:''; position:absolute;
+    top:0; left:0; width:3px; height:0;
+    background:var(--or);
+    transition:height 0.4s;
+  }
+  .pensee-card:hover::before { height:100%; }
+  .pensee-card:hover { background:rgba(212,168,67,0.04); }
+  .pensee-num {
+    font-family:'Playfair Display',serif;
+    font-size:64px; font-weight:900;
+    color:rgba(212,168,67,0.08);
+    position:absolute; top:16px; right:24px;
+    line-height:1;
+  }
+  .pensee-category {
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--or); margin-bottom:16px;
+    display:inline-block;
+    border:1px solid rgba(212,168,67,0.3);
+    padding:3px 10px;
+  }
+  .pensee-text {
+    font-family:'Playfair Display',serif;
+    font-size:18px; font-weight:400; font-style:italic;
+    color:rgba(255,255,255,0.9); line-height:1.6;
+    margin-bottom:20px;
+  }
+  .pensee-footer {
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .pensee-date { font-size:12px; color:rgba(255,255,255,0.3); }
+  .pensee-like {
+    font-size:12px; color:rgba(255,255,255,0.4);
+    cursor:pointer; transition:color 0.3s;
+    background:none; border:none; font-family:'DM Sans',sans-serif;
+  }
+  .pensee-like:hover { color:var(--rouge); }
+  .pensee-like.liked { color:var(--rouge); }
+
+  /* CITATIONS */
+  .citations { padding:100px 48px; background:rgba(255,255,255,0.02); }
+  .citations-masonry {
+    columns:3; column-gap:24px;
+    max-width:1200px; margin:0 auto;
+  }
+  .citation-item {
+    break-inside:avoid;
+    margin-bottom:24px;
+    padding:32px 28px;
+    border:1px solid rgba(255,255,255,0.06);
+    position:relative; transition:all 0.3s;
+  }
+  .citation-item:hover { border-color:rgba(212,168,67,0.3); }
+  .citation-item:nth-child(3n) { background:rgba(212,168,67,0.04); }
+  .citation-item:nth-child(5n) { background:rgba(176,28,28,0.04); }
+  .c-quote {
+    font-family:'Playfair Display',serif;
+    font-size:40px; color:rgba(212,168,67,0.2);
+    line-height:0.5; display:block; margin-bottom:12px;
+  }
+  .c-text {
+    font-family:'Playfair Display',serif;
+    font-size:16px; font-style:italic;
+    color:rgba(255,255,255,0.85); line-height:1.6;
+    margin-bottom:16px;
+  }
+  .c-tag {
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    color:rgba(212,168,67,0.6);
+  }
+  .c-share {
+    position:absolute; top:16px; right:16px;
+    font-size:14px; cursor:pointer;
+    opacity:0; transition:opacity 0.3s;
+    background:none; border:none; color:var(--or);
+  }
+  .citation-item:hover .c-share { opacity:1; }
+
+  /* SOUTIEN */
+  .soutien {
+    padding:100px 48px;
+    background:linear-gradient(135deg, #1A0A00, #0D0D0D, #1A0000);
+    position:relative; overflow:hidden;
+  }
+  .soutien::before {
+    content:''; position:absolute;
+    top:-200px; right:-200px;
+    width:600px; height:600px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(212,168,67,0.08) 0%, transparent 70%);
+  }
+  .soutien-container {
+    max-width:900px; margin:0 auto;
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:80px; align-items:center;
+    position:relative;
+  }
+  .soutien-left h2 {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(36px,4vw,54px); font-weight:700;
+    line-height:1.1; margin-bottom:24px;
+  }
+  .soutien-left h2 em { color:var(--or); font-style:italic; }
+  .soutien-left p {
+    font-size:15px; line-height:1.8;
+    color:rgba(255,255,255,0.6); margin-bottom:32px;
+  }
+  .soutien-right {
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(212,168,67,0.2);
+    padding:48px 40px; text-align:center;
+  }
+  .soutien-icon { font-size:64px; margin-bottom:24px; display:block; }
+  .soutien-title {
+    font-family:'Playfair Display',serif;
+    font-size:28px; font-weight:700;
+    color:var(--or); margin-bottom:8px;
+  }
+  .soutien-sub { font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:32px; }
+  .phone-display {
+    background:rgba(212,168,67,0.1);
+    border:2px solid var(--or);
+    padding:20px 32px; margin-bottom:24px;
+    display:inline-block;
+  }
+  .phone-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--or); margin-bottom:8px; }
+  .phone-num {
+    font-family:'Playfair Display',serif;
+    font-size:36px; font-weight:900;
+    color:var(--blanc); letter-spacing:4px;
+  }
+  .phone-network { font-size:12px; color:rgba(255,255,255,0.4); margin-top:4px; }
+  .copy-btn {
+    background:var(--or); color:var(--noir);
+    border:none; padding:12px 28px;
+    font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    cursor:pointer; font-family:'DM Sans',sans-serif;
+    font-weight:600; width:100%; margin-bottom:16px;
+    transition:all 0.3s;
+  }
+  .copy-btn:hover { background:var(--or2); }
+  .amounts-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:8px;
+    margin-bottom:16px;
+  }
+  .amount-btn {
+    border:1px solid rgba(212,168,67,0.3);
+    background:transparent; color:var(--or);
+    padding:10px; font-size:13px; font-weight:600;
+    cursor:pointer; transition:all 0.3s;
+    font-family:'DM Sans',sans-serif;
+  }
+  .amount-btn:hover { background:rgba(212,168,67,0.1); }
+  .amount-btn.selected { background:var(--or); color:var(--noir); }
+  .soutien-note { font-size:12px; color:rgba(255,255,255,0.3); line-height:1.6; }
+  .soutien-merci {
+    text-align:center; margin-top:48px;
+    padding:32px;
+    border-top:1px solid rgba(212,168,67,0.1);
+  }
+  .merci-text {
+    font-family:'Playfair Display',serif;
+    font-size:24px; font-style:italic;
+    color:rgba(255,255,255,0.5);
+  }
+  .merci-text span { color:var(--or); }
+
+  /* NEWSLETTER */
+  .newsletter {
+    padding:80px 48px;
+    background:var(--or);
+    text-align:center;
+  }
+  .newsletter h2 {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(28px,4vw,48px); font-weight:900;
+    color:var(--noir); margin-bottom:16px;
+  }
+  .newsletter p { color:rgba(13,13,13,0.7); margin-bottom:32px; font-size:15px; }
+  .newsletter-form { display:flex; gap:0; max-width:480px; margin:0 auto; }
+  .newsletter-form input {
+    flex:1; padding:16px 20px;
+    border:none; font-family:'DM Sans',sans-serif;
+    font-size:14px; outline:none;
+    background:var(--noir); color:var(--blanc);
+  }
+  .newsletter-form button {
+    background:var(--noir); color:var(--or);
+    border:none; padding:16px 24px;
+    font-size:12px; letter-spacing:2px;
+    text-transform:uppercase; cursor:pointer;
+    font-family:'DM Sans',sans-serif; font-weight:600;
+    white-space:nowrap; transition:all 0.3s;
+  }
+  .newsletter-form button:hover { background:#1a1a1a; }
+
+  /* FOOTER */
+  footer {
+    padding:48px; text-align:center;
+    border-top:1px solid rgba(255,255,255,0.06);
+  }
+  .footer-logo {
+    font-family:'Playfair Display',serif;
+    font-size:32px; font-weight:900;
+    color:var(--or); margin-bottom:16px;
+  }
+  .footer-links { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-bottom:24px; }
+  .footer-links a { color:rgba(255,255,255,0.4); text-decoration:none; font-size:13px; transition:color 0.3s; }
+  .footer-links a:hover { color:var(--or); }
+  .footer-social { display:flex; gap:12px; justify-content:center; margin-bottom:24px; }
+  .fsoc {
+    width:40px; height:40px;
+    border:1px solid rgba(255,255,255,0.1);
+    display:flex; align-items:center; justify-content:center;
+    color:rgba(255,255,255,0.4); text-decoration:none;
+    font-size:13px; transition:all 0.3s;
+  }
+  .fsoc:hover { border-color:var(--or); color:var(--or); }
+  .footer-copy { font-size:12px; color:rgba(255,255,255,0.2); }
+
+  /* TOAST */
+  .toast {
+    position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(100px);
+    background:var(--or); color:var(--noir);
+    padding:12px 24px; font-weight:600; font-size:14px;
+    z-index:999; transition:transform 0.4s;
+    pointer-events:none;
+  }
+  .toast.show { transform:translateX(-50%) translateY(0); }
+
+  @media(max-width:768px){
+    nav { padding:16px 20px; }
+    .nav-links { display:none; }
+    .hero { padding:100px 20px 60px; }
+    .hero-right { display:none; }
+    .pensees,.citations,.soutien,.quote-day,.newsletter { padding:60px 20px; }
+    .citations-masonry { columns:1; }
+    .soutien-container { grid-template-columns:1fr; gap:40px; }
+    footer { padding:40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">NARCISSE <span>DÉCLIC</span></div>
+  <ul class="nav-links">
+    <li><a href="#pensees">Mes Pensées</a></li>
+    <li><a href="#citations">Citations</a></li>
+    <li><a href="#soutien" class="nav-soutien">💛 Me Soutenir</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-tag">✦ Créateur de contenu 🇹🇬</div>
+    <h1>
+      <span class="line1">Narcisse</span>
+      <span class="line2">Déclic</span>
+      <span class="line3">Comédie · Motivation · Vérité</span>
+    </h1>
+    <p class="hero-desc">Des mots qui touchent, des pensées qui libèrent, des citations qui changent des vies. Bienvenue dans mon univers.</p>
+    <div class="hero-btns">
+      <a href="#pensees" class="btn-gold">Lire mes pensées</a>
+      <a href="#soutien" class="btn-outline">💛 Me soutenir</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-pill">
+      <span class="num">9K+</span>
+      <span class="lbl">Abonnés Facebook</span>
+    </div>
+    <div class="stat-pill">
+      <span class="num">100+</span>
+      <span class="lbl">Vidéos publiées</span>
+    </div>
+    <div class="stat-pill">
+      <span class="num">🇹🇬</span>
+      <span class="lbl">Lomé, Togo</span>
+    </div>
+  </div>
+</section>
+
+<!-- CITATION DU JOUR -->
+<section class="quote-day">
+  <div class="quote-label">✦ Citation du jour</div>
+  <div class="quote-text" id="quoteText">"L'hypocrisie tant que tu vis ça reste. Toi tu bosses. Et le monde verra ton étoile briller."</div>
+  <div class="quote-author">— Narcisse Déclic</div>
+  <div class="quote-actions">
+    <button class="action-btn" onclick="newQuote()">🔄 Nouvelle citation</button>
+    <button class="action-btn" onclick="copyQuote()">📋 Copier</button>
+    <button class="action-btn" onclick="shareQuote()">📤 Partager</button>
+  </div>
+</section>
+
+<!-- MES PENSEES -->
+<section class="pensees" id="pensees">
+  <div class="section-label">✦ Mes Pensées</div>
+  <h2 class="section-title">Ce que je pense,<br>je le dis.</h2>
+  <div class="pensees-grid" id="penseesGrid"></div>
+</section>
+
+<!-- CITATIONS -->
+<section class="citations" id="citations">
+  <div style="text-align:center; margin-bottom:64px;">
+    <div class="section-label">✦ Citations</div>
+    <h2 class="section-title" style="text-align:center;">Des mots qui<br><em style="color:var(--or); font-style:italic;">changent des vies</em></h2>
+  </div>
+  <div class="citations-masonry" id="citationsGrid"></div>
+</section>
+
+<!-- SOUTIEN -->
+<section class="soutien" id="soutien">
+  <div class="soutien-container">
+    <div class="soutien-left">
+      <div class="section-label">✦ Me Soutenir</div>
+      <h2>Donnez-moi <em>la force</em> de continuer</h2>
+      <p>Chaque contenu que je crée, chaque mot que j'écris, chaque vidéo que je publie — c'est pour vous, pour notre communauté, pour l'Afrique. Si mon contenu vous a aidé, inspiré ou fait sourire, votre soutien financier m'aide à continuer cette mission.</p>
+      <p>Même 500 FCFA peut changer ma journée et me motiver à créer encore plus de contenu pour vous. 🙏</p>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="#soutien" class="btn-gold">Soutenir maintenant</a>
+      </div>
+    </div>
+    <div class="soutien-right">
+      <span class="soutien-icon">💛</span>
+      <div class="soutien-title">Envoyer votre soutien</div>
+      <div class="soutien-sub">Mobile Money — Togo</div>
+      <div class="phone-display">
+        <div class="phone-label">Numéro Mobile Money</div>
+        <div class="phone-num">72 33 42 84</div>
+        <div class="phone-network">Flooz (Moov) · T-Money (Togocel)</div>
+      </div>
+      <button class="copy-btn" onclick="copyPhone()">📋 Copier le numéro</button>
+      <div style="margin-bottom:16px; font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:1px; text-transform:uppercase;">Montants suggérés</div>
+      <div class="amounts-grid">
+        <button class="amount-btn" onclick="selectAmount(this)">500 F</button>
+        <button class="amount-btn" onclick="selectAmount(this)">1 000 F</button>
+        <button class="amount-btn" onclick="selectAmount(this)">2 000 F</button>
+        <button class="amount-btn" onclick="selectAmount(this)">5 000 F</button>
+        <button class="amount-btn" onclick="selectAmount(this)">10 000 F</button>
+        <button class="amount-btn" onclick="selectAmount(this)">Autre</button>
+      </div>
+      <p class="soutien-note">Envoyez le montant de votre choix sur le numéro ci-dessus. Chaque contribution est précieuse et m'aide à créer plus de contenu pour vous. Merci du fond du cœur ! 🙏</p>
+    </div>
+  </div>
+  <div class="soutien-merci">
+    <div class="merci-text">"Votre soutien est ma <span>force</span>. Ensemble, on va loin." 🔥</div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <h2>Restez inspiré chaque jour</h2>
+  <p>Recevez mes nouvelles citations et pensées directement dans votre boîte mail</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="Votre adresse email...">
+    <button onclick="subscribe()">S'abonner →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">NARCISSE DÉCLIC</div>
+  <div class="footer-links">
+    <a href="#pensees">Mes Pensées</a>
+    <a href="#citations">Citations</a>
+    <a href="#soutien">Me Soutenir</a>
+    <a href="https://www.facebook.com/PATCHANAMessotokam" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/narcisse_declic" target="_blank">Instagram</a>
+  </div>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/PATCHANAMessotokam" class="fsoc" target="_blank">f</a>
+    <a href="https://www.instagram.com/narcisse_declic" class="fsoc" target="_blank">ig</a>
+    <a href="https://www.youtube.com/@narcissedeclic" class="fsoc" target="_blank">yt</a>
+    <a href="https://www.tiktok.com/@narcisse_declic" class="fsoc" target="_blank">tt</a>
+  </div>
+  <div class="footer-copy">© 2026 Narcisse Déclic — 🇹🇬 Fait avec ❤️ depuis Lomé, Togo</div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// CURSEUR
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => {
+    ring.style.left = e.clientX + 'px';
+    ring.style.top = e.clientY + 'px';
+  }, 80);
+});
+
+// DONNEES
+const pensees = [
+  { cat:"Vérité", text:"Les gens qui te critiquent le plus fort sont souvent ceux qui ont le plus peur de te voir réussir.", date:"2 Mai 2026", likes:247 },
+  { cat:"Foi", text:"Dieu ne t'a pas mis dans cette situation pour te détruire. Il t'y a mis pour te construire.", date:"1 Mai 2026", likes:412 },
+  { cat:"Vie", text:"Tu peux être la meilleure version de toi-même et certains te détesteront quand même. Continue quand même.", date:"30 Avr 2026", likes:189 },
+  { cat:"Succès", text:"Le succès n'est pas une destination. C'est une habitude. Recommence chaque matin.", date:"29 Avr 2026", likes:334 },
+  { cat:"Amour", text:"N'aime pas quelqu'un parce qu'il est beau. Aime quelqu'un parce qu'il te rend meilleur.", date:"28 Avr 2026", likes:521 },
+  { cat:"Courage", text:"La différence entre ceux qui réussissent et les autres ? Ils ont continué quand tout le monde avait abandonné.", date:"27 Avr 2026", likes:298 },
+];
+
+const citations = [
+  { text:"L'hypocrisie tant que tu vis ça reste. Toi tu bosses. Et le monde verra ton étoile briller.", tag:"Motivation" },
+  { text:"Si tes souffrances sont mondiales, ta victoire le sera aussi.", tag:"Force" },
+  { text:"Ceux qui ont ri de tes rêves seront les premiers à demander comment tu as réussi.", tag:"Vérité" },
+  { text:"DIEU SAIT POURQUOI. Et ça, aucune hypocrisie ne peut te l'enlever.", tag:"Foi" },
+  { text:"Même à genoux, avance. Même en pleurant, avance. Même seul, avance.", tag:"Persévérance" },
+  { text:"Ton heure viendra. Pas l'heure de quelqu'un d'autre. TON heure à toi.", tag:"Patience" },
+  { text:"Le monde ne verra pas tes nuits blanches. Mais il verra ton étoile briller.", tag:"Sacrifice" },
+  { text:"Les gens ne voient pas tes sacrifices. Mais Dieu voit tout.", tag:"Foi" },
+  { text:"Continue de te battre. Continue d'avancer. Même à genoux.", tag:"Courage" },
+  { text:"Ce n'est pas ton niveau ? Parfait. Regarde dans quelques années où tu seras.", tag:"Ambition" },
+  { text:"Ils t'ont sous-estimé. C'est leur plus grande erreur et ta plus grande motivation.", tag:"Force" },
+  { text:"La victoire appartient à ceux qui refusent d'abandonner.", tag:"Succès" },
+];
+
+const dailyQuotes = [
+  '"L\'hypocrisie tant que tu vis ça reste. Toi tu bosses. Et le monde verra ton étoile briller."',
+  '"Si tes souffrances sont mondiales, ta victoire le sera aussi."',
+  '"Ton heure viendra. Pas l\'heure de quelqu\'un d\'autre. TON heure à toi."',
+  '"Même à genoux, avance. Même en pleurant, avance. Même seul, avance."',
+  '"Ils t\'ont sous-estimé. C\'est leur plus grande erreur et ta plus grande motivation."',
+  '"DIEU SAIT POURQUOI. Et ça, aucune hypocrisie ne peut te l\'enlever."',
+];
+let quoteIdx = 0;
+
+// RENDER PENSEES
+function renderPensees() {
+  const grid = document.getElementById('penseesGrid');
+  grid.innerHTML = pensees.map((p, i) => `
+    <div class="pensee-card">
+      <div class="pensee-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="pensee-category">${p.cat}</div>
+      <div class="pensee-text">"${p.text}"</div>
+      <div class="pensee-footer">
+        <span class="pensee-date">${p.date}</span>
+        <button class="pensee-like" onclick="likePensee(this, ${i})">❤️ ${p.likes}</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// RENDER CITATIONS
+function renderCitations() {
+  const grid = document.getElementById('citationsGrid');
+  grid.innerHTML = citations.map(c => `
+    <div class="citation-item">
+      <span class="c-quote">"</span>
+      <div class="c-text">${c.text}</div>
+      <div class="c-tag">${c.tag}</div>
+      <button class="c-share" onclick="copyText('${c.text.replace(/'/g,"\\'")}')">📋</button>
+    </div>
+  `).join('');
+}
+
+// LIKE
+function likePensee(btn, idx) {
+  if (btn.classList.contains('liked')) return;
+  btn.classList.add('liked');
+  pensees[idx].likes++;
+  btn.textContent = `❤️ ${pensees[idx].likes}`;
+  showToast('Merci pour le ❤️ !');
+}
+
+// QUOTE DU JOUR
+function newQuote() {
+  quoteIdx = (quoteIdx + 1) % dailyQuotes.length;
+  document.getElementById('quoteText').textContent = dailyQuotes[quoteIdx];
+  showToast('Nouvelle citation ! ✨');
+}
+
+function copyQuote() {
+  const text = document.getElementById('quoteText').textContent;
+  navigator.clipboard.writeText(text + ' — Narcisse Déclic').then(() => showToast('Citation copiée ! 📋'));
+}
+
+function shareQuote() {
+  const text = document.getElementById('quoteText').textContent;
+  if (navigator.share) {
+    navigator.share({ title: 'Narcisse Déclic', text: text + ' — Narcisse Déclic', url: window.location.href });
+  } else {
+    copyQuote();
+  }
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText('"' + text + '" — Narcisse Déclic').then(() => showToast('Copié ! 📋'));
+}
+
+// COPIER NUMÉRO
+function copyPhone() {
+  navigator.clipboard.writeText('72334284').then(() => {
+    showToast('Numéro copié : 72 33 42 84 ✅');
+  });
+}
+
+// MONTANTS
+function selectAmount(btn) {
+  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  showToast(`Montant sélectionné : ${btn.textContent} 💛`);
+}
+
+// NEWSLETTER
+function subscribe() {
+  const input = document.querySelector('.newsletter-form input');
+  if (input.value) {
+    showToast('Merci ! Vous êtes abonné ✅');
+    input.value = '';
+  } else {
+    showToast('Entrez votre email d\'abord 📧');
+  }
+}
+
+// TOAST
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ANIMATION AU SCROLL
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+// INIT
+renderPensees();
+renderCitations();
+document.querySelectorAll('.pensee-card, .citation-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s, transform 0.6s';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
